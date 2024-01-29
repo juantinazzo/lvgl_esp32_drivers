@@ -123,9 +123,14 @@ void ssd1306_init(void)
         0x14,
         orientation_1,
         orientation_2,
-        OLED_CMD_SET_CONTRAST,
-        0xFF,
+        OLED_CMD_SET_CONTRAST, /* [2] set contrast control */
+		0xCF,
         display_mode,
+		0xD9, /* [2] pre-charge period 0x022/f1*/
+		0xF1,
+		0xdb, /* vcomh deselect level 0x000 .. 0x070, low nibble always 0 */
+		0x040,
+        0xFF,
         OLED_CMD_DISPLAY_ON
     };
 

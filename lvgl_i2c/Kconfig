@@ -2,6 +2,7 @@ menu "I2C Port 0"
 
 	config I2C_MANAGER_0_ENABLED
 		bool "Enable I2C port 0"
+		default true
 		
 	if I2C_MANAGER_0_ENABLED
 		config I2C_MANAGER_0_SDA
@@ -19,7 +20,7 @@ menu "I2C Port 0"
 				5000000 (5 Mhz). I2C busses that involve external wires may
 				have to be slower, and the real maximum speed the bus will
 				support depends on the value of the pullup resistors and the
-				design of the overall circuit. 
+				design of the overall circuit.
 		config I2C_MANAGER_0_TIMEOUT
 			int "R/W timeout (ms)"
 			default 20
@@ -38,6 +39,7 @@ menu "I2C Port 0"
 				timeout.
 		config I2C_MANAGER_0_PULLUPS
 			bool "Use ESP32 built-in bus pull-up resistors"
+			default false
 			help
 				The I2C bus needs resistors to make sure it's in a defined
 				state when nobody is talking. Many circuits have external
@@ -50,15 +52,17 @@ endmenu
 
 
 menu "I2C Port 1"
-	
+
 	config I2C_MANAGER_1_ENABLED
 		bool "Enable I2C port 1"
-		
+
 	if I2C_MANAGER_1_ENABLED
 		config I2C_MANAGER_1_SDA
 			int "SDA (GPIO pin)"
+			default 0
 		config I2C_MANAGER_1_SCL
 			int "SCL (GPIO pin)"
+			default 0
 		config I2C_MANAGER_1_FREQ_HZ
 			int "Frequency (Hz)"
 			default 1000000
@@ -68,7 +72,7 @@ menu "I2C Port 1"
 				5000000 (5 Mhz). I2C busses that involve external wires may
 				have to be slower, and the real maximum speed the bus will
 				support depends on the value of the pullup resistors and the
-				design of the overall circuit. 
+				design of the overall circuit.
 		config I2C_MANAGER_1_TIMEOUT
 			int "R/W timeout (ms)"
 			default 20
